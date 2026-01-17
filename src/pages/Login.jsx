@@ -27,7 +27,7 @@ export default function Login() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <input
                         type="text"
-                        placeholder="Email or Phone Number"
+                        placeholder="Email Address"
                         className="w-full bg-transparent border border-white/20 p-3 text-white focus:border-[#d4af37] outline-none transition-colors"
                         value={identifier}
                         onChange={(e) => setIdentifier(e.target.value)}

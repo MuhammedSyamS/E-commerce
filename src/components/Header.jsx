@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { FaShoppingBag, FaSearch, FaUser } from 'react-icons/fa';
 import useAuth from '../hooks/useAuth';
+import useCart from '../hooks/useCart';
 
 export default function Header() {
     const { user, logout } = useAuth();
+    const { getCartCount } = useCart();
     return (
         <nav className="fixed w-full p-6 z-50 mix-blend-difference flex justify-between items-center animate-fade-in text-white">
             <Link to="/" className="text-2xl font-serif tracking-widest text-[#d4af37]">LUXE</Link>
@@ -27,9 +29,9 @@ export default function Header() {
                         <Link to="/register" className="hover:text-[#d4af37] transition-colors">Sign Up</Link>
                     </div>
                 )}
-                <button className="border border-[#d4af37] px-6 py-2 uppercase text-xs tracking-[0.2em] hover:bg-[#d4af37] hover:text-[#1a1a1a] transition-all duration-300 flex items-center gap-2">
-                    Cart (0) <FaShoppingBag />
-                </button>
+                <Link to="/cart" className="border border-[#d4af37] px-6 py-2 uppercase text-xs tracking-[0.2em] hover:bg-[#d4af37] hover:text-[#1a1a1a] transition-all duration-300 flex items-center gap-2">
+                    Cart ({getCartCount()}) <FaShoppingBag />
+                </Link>
             </div>
         </nav>
     );

@@ -5,7 +5,6 @@ import useAuth from '../hooks/useAuth';
 export default function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const { register } = useAuth();
@@ -14,7 +13,7 @@ export default function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await register(name, email, phone, password);
+            await register(name, email, password);
             // Navigate to OTP page with identifier (email)
             navigate('/verify-otp', { state: { identifier: email } });
         } catch (err) {
@@ -41,13 +40,6 @@ export default function Register() {
                         className="w-full bg-transparent border border-white/20 p-3 text-white focus:border-#d4af37 outline-none transition-colors"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Phone Number"
-                        className="w-full bg-transparent border border-white/20 p-3 text-white focus:border-#d4af37 outline-none transition-colors"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
                     />
                     <input
                         type="password"

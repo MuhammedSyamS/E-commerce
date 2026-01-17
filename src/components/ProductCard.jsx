@@ -1,4 +1,7 @@
+import useCart from '../hooks/useCart';
+
 export default function ProductCard({ product }) {
+    const { addToCart } = useCart();
     return (
         <div className="group relative">
             <div className="aspect-[3/4] overflow-hidden bg-gray-900">
@@ -15,6 +18,12 @@ export default function ProductCard({ product }) {
                 </div>
                 <p className="text-lg font-medium text-[#d4af37]">${product.price.toLocaleString()}</p>
             </div>
+            <button
+                onClick={() => addToCart(product)}
+                className="w-full mt-4 border border-white/20 py-3 text-sm uppercase tracking-widest hover:bg-[#d4af37] hover:text-[#1a1a1a] transition-all duration-300"
+            >
+                Add to Cart
+            </button>
         </div>
     );
 }
